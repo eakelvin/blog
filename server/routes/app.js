@@ -55,6 +55,20 @@ router.post('/search', async (req, res) => {
     }
 })
 
+router.get('/content', async(req, res) => {
+    const locals = {
+        title: "EA Codes",
+        description: "EA Blog with Node, Express and Mongo"
+    }
+
+    try {
+        const data = await post.find()
+        res.render('content', { locals, data })
+    } catch (error) {
+        console.log(error);
+    }
+})
+
 router.get('/contact', (req, res) => {
     res.render('contact')
 })
