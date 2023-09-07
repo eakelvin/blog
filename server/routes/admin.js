@@ -29,7 +29,8 @@ router.get('/admin', async (req, res) => {
             title: "EA Dashboard",
             description: "EA Blog with Node, Express and Mongo"
         }
-        res.render('admin/home', { locals, layout: adminLayout })
+        const isHomePage = false
+        res.render('admin/home', { locals, layout: adminLayout, isHomePage })
     } catch (error) {
         console.log(error);
     }
@@ -65,9 +66,10 @@ router.get('/dashboard', authMiddleware, async(req, res) => {
             title: 'Dashboard',
             description: 'EA-Blog'
         }
+        const isHomePage = false
 
         const data = await post.find()
-        res.render('admin/dashboard', { data, locals, layout: adminLayout }) 
+        res.render('admin/dashboard', { isHomePage, data, locals, layout: adminLayout }) 
     } catch (error) {
         console.log(error);
     }

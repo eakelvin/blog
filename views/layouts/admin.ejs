@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%- locals.title %></title>
     <link rel="stylesheet" href="/style.css">
-    <script type=""></script>
     <script type="text/javascript" defer src="/script.js"></script>
 </head>
 
 <body>
     <div class="container">
-        <%- include('../partials/header_admin.ejs') %>
+        <% if (!isHomePage) { %>
+            <%- include('../partials/header_admin.ejs', { locals }) %>
+        <% } %>
         <main class="main">
             <%- body %>
         </main>
