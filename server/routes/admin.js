@@ -67,7 +67,6 @@ router.get('/dashboard', authMiddleware, async(req, res) => {
             description: 'EA-Blog'
         }
         const isHomePage = false
-
         const data = await post.find()
         res.render('admin/dashboard', { isHomePage, data, locals, layout: adminLayout }) 
     } catch (error) {
@@ -81,9 +80,9 @@ router.get('/add-post', authMiddleware, async(req, res) => {
             title: 'Dashboard',
             description: 'EA-Blog'
         }
-
+        const isHomePage = false
         const data = await post.find()
-        res.render('admin/add-post', { locals, layout: adminLayout }) 
+        res.render('admin/add-post', { isHomePage, locals, layout: adminLayout }) 
     } catch (error) {
         console.log(error);
     }
@@ -114,10 +113,10 @@ router.get('/edit-post/:id', authMiddleware, async(req, res) => {
             title: 'Dashboard',
             description: 'EA-Blog'
         }
-
+        const isHomePage = false
        const data = await post.findOne({ _id: req.params.id })
 
-       res.render('admin/edit-post', {locals, data, layout: adminLayout })
+       res.render('admin/edit-post', {isHomePage, locals, data, layout: adminLayout })
     } catch (error) {
         console.log(error);
     }
