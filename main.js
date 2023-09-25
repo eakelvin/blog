@@ -27,8 +27,9 @@ server.use(express.static('public'))
 server.use(expressLayout)
 server.set('layout', './layouts/main')
 server.set('view engine', 'ejs')
+
 server.use('/', require('./server/routes/app'))
 server.use('/', require('./server/routes/admin'))
 
 
-server.listen(PORT, () => console.log(`Server Sabi for Port ${PORT}`))
+server.listen(PORT, () => console.log(`Server live on Port ${PORT}`))
